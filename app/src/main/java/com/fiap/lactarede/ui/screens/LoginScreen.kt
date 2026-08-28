@@ -36,8 +36,8 @@ private val AzulLactaRede = Color(0xFF55B1DF)
 
 @Composable
 fun LoginScreen(
-    onCadastrarClick: () -> Unit = {},
-    onEntrarClick: () -> Unit = {}
+    onCadastrarClick: () -> Unit,
+    onLoginClick: () -> Unit
 ) {
 
     var email by remember { mutableStateOf("") }
@@ -205,7 +205,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(30.dp))
 
         Button(
-            onClick = onEntrarClick,
+            onClick = onLoginClick,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(38.dp),
@@ -250,10 +250,4 @@ private fun SocialButton(
             color = textColor
         )
     }
-}
-
-@Preview
-@Composable
-private fun LoginScreenPreview() {
-    LoginScreen {  }
 }

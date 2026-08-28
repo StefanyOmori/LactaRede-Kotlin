@@ -42,7 +42,7 @@ import com.fiap.lactarede.model.Agendamento
 private val AzulLactaRede = Color(0xFF55B1DF)
 
 @Composable
-fun AgendamentosScreens(
+fun AgendamentosScreen(
     onBackClick: () -> Unit = {},
     onDetailsClick: (Agendamento) -> Unit = {},
     onCancelClick: (Agendamento) -> Unit = {}

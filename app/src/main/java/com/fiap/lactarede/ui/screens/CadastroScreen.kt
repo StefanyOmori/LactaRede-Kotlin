@@ -35,8 +35,8 @@ private val AzulLactaRede = Color(0xFF55B1DF)
 
 @Composable
 fun CadastroScreen(
-    onLoginClick: () -> Unit = {},
-    onCadastroClick: () -> Unit = {}
+    onLoginClick: () -> Unit,
+    onCadastroClick: () -> Unit
 ) {
 
     var nome by remember { mutableStateOf("") }
@@ -250,11 +250,4 @@ private fun InputField(
             shape = RoundedCornerShape(13.dp)
         )
     }
-}
-
-
-@Preview
-@Composable
-private fun CadastroScreenPreview() {
-    CadastroScreen {  }
 }
