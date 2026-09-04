@@ -62,18 +62,18 @@ fun NotificationScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            IconButton(
-                onClick = onBackClick,
-                modifier = Modifier.size(40.dp)
-            ) {
-
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Voltar",
-                    tint = Color.Black,
-                    modifier = Modifier.size(31.dp)
-                )
-            }
+//            IconButton(
+//                onClick = onBackClick,
+//                modifier = Modifier.size(40.dp)
+//            ) {
+//
+//                Icon(
+//                    imageVector = Icons.Default.ArrowBack,
+//                    contentDescription = "Voltar",
+//                    tint = Color.Black,
+//                    modifier = Modifier.size(31.dp)
+//                )
+//            }
 
             Text(
                 text = "Notificações",
@@ -85,12 +85,12 @@ fun NotificationScreen(
                     .weight(1f)
             )
 
-            Icon(
-                imageVector = Icons.Default.NotificationsNone,
-                contentDescription = "Notificações",
-                tint = AzulLactaRede,
-                modifier = Modifier.size(31.dp)
-            )
+//            Icon(
+//                imageVector = Icons.Default.NotificationsNone,
+//                contentDescription = "Notificações",
+//                tint = AzulLactaRede,
+//                modifier = Modifier.size(31.dp)
+//            )
         }
 
         Spacer(modifier = Modifier.height(70.dp))

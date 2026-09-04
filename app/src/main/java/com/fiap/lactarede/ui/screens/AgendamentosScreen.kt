@@ -1,7 +1,10 @@
 package com.fiap.lactarede.ui.screens
 
+import androidx.compose.ui.graphics.vector.ImageVector
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,17 +21,19 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,6 +55,31 @@ fun AgendamentosScreen(
 
     val agendamentos = AgendamentoData.agendamentos
 
+    var abaSelecionada by remember {
+        mutableStateOf("Próximos")
+    }
+
+    val agendamentosFiltrados = when (abaSelecionada) {
+        "Cancelados" -> {
+            agendamentos.filter {
+                it.status.equals("Cancelado", ignoreCase = true)
+            }
+        }
+
+        "Anteriores" -> {
+            agendamentos.filter {
+                it.status.equals("Concluído", ignoreCase = true)
+            }
+        }
+
+        else -> {
+            agendamentos.filter {
+                !it.status.equals("Cancelado", ignoreCase = true) &&
+                        !it.status.equals("Concluído", ignoreCase = true)
+            }
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -66,19 +96,6 @@ fun AgendamentosScreen(
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-
-            IconButton(
-                onClick = onBackClick,
-                modifier = Modifier.size(40.dp)
-            ) {
-
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Voltar",
-                    tint = Color.Black,
-                    modifier = Modifier.size(31.dp)
-                )
-            }
 
             Text(
                 text = "Meus agendamentos",
@@ -105,19 +122,28 @@ fun AgendamentosScreen(
 
             TabItem(
                 texto = "Próximos",
-                selecionado = true,
+                selecionado = abaSelecionada == "Próximos",
+                onClick = {
+                    abaSelecionada = "Próximos"
+                },
                 modifier = Modifier.weight(1f)
             )
 
             TabItem(
                 texto = "Anteriores",
-                selecionado = false,
+                selecionado = abaSelecionada == "Anteriores",
+                onClick = {
+                    abaSelecionada = "Anteriores"
+                },
                 modifier = Modifier.weight(1f)
             )
 
             TabItem(
                 texto = "Cancelados",
-                selecionado = false,
+                selecionado = abaSelecionada == "Cancelados",
+                onClick = {
+                    abaSelecionada = "Cancelados"
+                },
                 modifier = Modifier.weight(1f)
             )
         }
@@ -126,18 +152,16 @@ fun AgendamentosScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
-
             contentPadding = PaddingValues(
                 start = 27.dp,
                 end = 27.dp,
                 top = 32.dp,
                 bottom = 30.dp
             ),
-
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
 
-            items(agendamentos) { agendamento ->
+            items(agendamentosFiltrados) { agendamento ->
 
                 AgendamentoCard(
                     agendamento = agendamento,
@@ -157,11 +181,17 @@ fun AgendamentosScreen(
 private fun TabItem(
     texto: String,
     selecionado: Boolean,
+    onClick: () -> Unit,
     modifier: Modifier
 ) {
 
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .clip(RoundedCornerShape(5.dp))
+            .clickable {
+                onClick()
+            },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -174,11 +204,7 @@ private fun TabItem(
             } else {
                 Color(0xFF555555)
             },
-            fontWeight = if (selecionado) {
-                FontWeight.Normal
-            } else {
-                FontWeight.Normal
-            }
+            fontWeight = FontWeight.Normal
         )
 
         if (selecionado) {
@@ -362,7 +388,7 @@ private fun AgendamentoCard(
 
 @Composable
 private fun InfoRow(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    icon: ImageVector,
     text: String
 ) {
 

@@ -57,18 +57,18 @@ fun HelpScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            IconButton(
-                onClick = onBackClick,
-                modifier = Modifier.size(40.dp)
-            ) {
-
-                Icon(
-                    imageVector = Icons.Outlined.ArrowBack,
-                    contentDescription = "Voltar",
-                    tint = Color(0xFF202020),
-                    modifier = Modifier.size(32.dp)
-                )
-            }
+//            IconButton(
+//                onClick = onBackClick,
+//                modifier = Modifier.size(40.dp)
+//            ) {
+//
+//                Icon(
+//                    imageVector = Icons.Outlined.ArrowBack,
+//                    contentDescription = "Voltar",
+//                    tint = Color(0xFF202020),
+//                    modifier = Modifier.size(32.dp)
+//                )
+//            }
 
             Text(
                 text = "Ajuda e suporte",

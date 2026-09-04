@@ -128,24 +128,24 @@ fun DoarScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            IconButton(
-                onClick = {
-                    if (etapaAtual > 1) {
-                        etapaAtual--
-                    } else {
-                        onBackClick()
-                    }
-                },
-                modifier = Modifier.size(40.dp)
-            ) {
-
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Voltar",
-                    tint = Color.Black,
-                    modifier = Modifier.size(31.dp)
-                )
-            }
+//            IconButton(
+//                onClick = {
+//                    if (etapaAtual > 1) {
+//                        etapaAtual--
+//                    } else {
+//                        onBackClick()
+//                    }
+//                },
+//                modifier = Modifier.size(40.dp)
+//            ) {
+//
+//                Icon(
+//                    imageVector = Icons.Default.ArrowBack,
+//                    contentDescription = "Voltar",
+//                    tint = Color.Black,
+//                    modifier = Modifier.size(31.dp)
+//                )
+//            }
 
             Text(
                 text = "Quero doar",
