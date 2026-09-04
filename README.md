@@ -46,7 +46,8 @@ A **Splash Screen** é a tela inicial apresentada ao abrir o aplicativo. Ela apr
 
 A tela de **Login** permite que a usuária informe seus dados para acessar o aplicativo.
 
-<img width="260" height="544" alt="Screenshot 2026-09-04 174616" src="https://github.com/user-attachments/assets/5ce04e32-cf6d-484f-a91f-7d656c480538" />
+<img width="330" height="686" alt="Screenshot 2026-09-04 180521" src="https://github.com/user-attachments/assets/646b1964-33a3-4b74-9241-ca6751345bf3" />
+
 
 
 ---
@@ -55,8 +56,10 @@ A tela de **Login** permite que a usuária informe seus dados para acessar o apl
 
 A tela de **Cadastro** permite que uma nova usuária preencha suas informações para realizar seu cadastro na aplicação.
 
-<img width="256" height="551" alt="Screenshot 2026-09-04 174642" src="https://github.com/user-attachments/assets/0226f98d-aa17-4d01-9f15-c2727fd20cf7" />
-<img width="263" height="554" alt="Screenshot 2026-09-04 174711" src="https://github.com/user-attachments/assets/025d9ed8-770e-4144-88ba-6f2a52464f04" />
+<img width="330" height="686" alt="Screenshot 2026-09-04 180632" src="https://github.com/user-attachments/assets/bd877de3-0601-4077-8273-239b59790003" />
+<img width="324" height="677" alt="Screenshot 2026-09-04 180646" src="https://github.com/user-attachments/assets/4dc87f5e-078a-470a-96b4-b218516e8c6c" />
+
+
 
 ---
 
