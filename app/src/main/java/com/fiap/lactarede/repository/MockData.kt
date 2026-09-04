@@ -6,6 +6,7 @@ import com.fiap.lactarede.model.PontosColeta
 import com.fiap.lactarede.model.UserProfile
 
 object MockData {
+    const val mockPassword = "12345"
     val currentUser = UserProfile(
         name = "Mariana Ribeiro",
         email = "mari.ribeiro@gmail.com",

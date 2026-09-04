@@ -31,6 +31,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.fiap.lactarede.repository.MockData
 
 private val AzulLactaRede = Color(0xFF55B1DF)
 
@@ -42,6 +43,7 @@ fun LoginScreen(
 
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
+    var erroLogin by remember { mutableStateOf<String?>(null) }
 
     Column(
         modifier = Modifier
@@ -142,8 +144,7 @@ fun LoginScreen(
                 value = email,
                 onValueChange = { email = it },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(39.dp),
+                    .fillMaxWidth(),
                 placeholder = {
                     Text(
                         text = "E-mail",
@@ -152,7 +153,12 @@ fun LoginScreen(
                     )
                 },
                 singleLine = true,
-                shape = RoundedCornerShape(13.dp)
+                shape = RoundedCornerShape(13.dp),
+                colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black,
+                    cursorColor = AzulLactaRede
+                )
             )
         }
 
@@ -174,8 +180,7 @@ fun LoginScreen(
                 value = senha,
                 onValueChange = { senha = it },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(39.dp),
+                    .fillMaxWidth(),
                 placeholder = {
                     Text(
                         text = "Insira a senha",
@@ -185,7 +190,12 @@ fun LoginScreen(
                 },
                 singleLine = true,
                 visualTransformation = PasswordVisualTransformation(),
-                shape = RoundedCornerShape(13.dp)
+                shape = RoundedCornerShape(13.dp),
+                colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black,
+                    cursorColor = AzulLactaRede
+                )
             )
         }
 
@@ -202,10 +212,33 @@ fun LoginScreen(
             )
         }
 
+        erroLogin?.let { mensagem ->
+            Text(
+                text = mensagem,
+                color = Color.Red,
+                fontSize = 14.sp,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
         Spacer(modifier = Modifier.height(30.dp))
 
         Button(
-            onClick = onLoginClick,
+            onClick = {
+                erroLogin = null
+                when {
+                    email.isBlank() || senha.isBlank() -> {
+                        erroLogin = "Preencha e-mail e senha."
+                    }
+                    email == MockData.currentUser.email && senha == MockData.mockPassword -> {
+                        onLoginClick()
+                    }
+                    else -> {
+                        erroLogin = "E-mail ou senha inválidos."
+                    }
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(38.dp),
