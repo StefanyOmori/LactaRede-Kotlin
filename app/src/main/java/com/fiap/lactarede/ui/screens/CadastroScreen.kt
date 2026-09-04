@@ -237,8 +237,7 @@ private fun InputField(
             value = value,
             onValueChange = onValueChange,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(39.dp),
+                .fillMaxWidth(),
             placeholder = {
                 Text(
                     text = placeholder,
@@ -247,7 +246,12 @@ private fun InputField(
                 )
             },
             singleLine = true,
-            shape = RoundedCornerShape(13.dp)
+            shape = RoundedCornerShape(13.dp),
+            colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                focusedTextColor = Color.Black,
+                unfocusedTextColor = Color.Black,
+                cursorColor = AzulLactaRede
+            )
         )
     }
 }
